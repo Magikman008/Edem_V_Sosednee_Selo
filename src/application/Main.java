@@ -22,7 +22,7 @@ public class Main extends Application {
 	    @Override
 	    public void start(Stage theStage) 
 	    {
-	        theStage.setTitle( "Поїхали" );
+	        theStage.setTitle( "Ii?oaee" );
 
 	        Group root = new Group();
 	        Scene theScene = new Scene( root );
@@ -66,39 +66,53 @@ public class Main extends Application {
 	        	double s = 10;
 	            public void handle(long currentNanoTime)
 	            {
-	            	if (t>1024) {
-	            		t=0;
+	            	if (t > 1024 || t < -1024) {
+	            		t = 0;
 	            	}else {
-	            		t=Math.abs(t+s);
+	            		t = t+s;
+	            		System.out.print(t + " ");
 	            	}
 	            	gc.drawImage(one, 0, t );
-	            	gc.drawImage(one, 0, t-1024 );
+	            	gc.drawImage(one, 0, t - 1024 );
+	            	gc.drawImage(one, 0, t + 1024 );
 	            	if (input.contains("LEFT")) {
-	            		if (x-10<0) {
-	            			x=0;
+	            		if (x - 10 < 0) {
+	            			x = 0;
 	            		}else {
-	            			x=x-10;
+	            			x = x - 10;
 	            		}
 	                }
 	            	
 	                if (input.contains("RIGHT")) {
-	                	if (x+10>896) {
-	            			x=896;
+	                	if (x + 10 > 896) {
+	            			x = 896;
 	            		}else {
-	            			x=x+10;
+	            			x = x + 10;
 	            		}
 	                }
 
 	            	if (input.contains("DOWN")) {
-	            		if (s-0.3<0) {
-	            			s=0;
-	            		}else {
-	            			s=s-0.3;
-	            		}
+	            		/*if (s - 0.3 < 0) {
+	            			s = 0;
+	            		}else {*/
+	            			s = s - 0.3;
+	            		
 	                }
 	            	
 	                if (input.contains("UP")) {
-	                	s=s+0.3;
+	                	s = s + 0.3;
+	                }
+	                
+	                if (input.contains("DOWN") && t > 0) {
+	            		/*if (s - 0.3 < 0) {
+	            			s = 0;
+	            		}else {*/
+	            			s = s - 1;
+	            		
+	                }
+	            	
+	                if (input.contains("UP") && t < 0) {
+	                	s = s + 1;
 	                }
 	            	gc.drawImage( car, x, 512 );
 	                
