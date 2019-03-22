@@ -70,7 +70,6 @@ public class Main extends Application {
 	            		t = 0;
 	            	}else {
 	            		t = t+s;
-	            		System.out.print(t + " ");
 	            	}
 	            	gc.drawImage(one, 0, t );
 	            	gc.drawImage(one, 0, t - 1024 );
